@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Shopping Store</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #263b70;
+        }
+
+        .api {
+            text-align: center;
+            font-weight: bold;
+            color: green;
+        }
+
+        .section {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+        }
+
+        .card {
+            display: inline-block;
+            vertical-align: top;
+            background: white;
+            width: 240px;
+            padding: 15px;
+            margin: 12px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #bbb;
+            text-align: center;
+        }
+
+        .card img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+        }
+
+        .card h3 {
+            color: #263b70;
+        }
+
+        .price {
+            color: green;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        #products {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Welcome to My Shopping Store</h1>
+
+    <div class="api"></div>
+
+    <h2>JavaScript - 20 Questions</h2>
+
+    <div class="section">
+        <h3>Task 1 - Product Title</h3>
+        <div id="task1"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 2 - Product ID and Title</h3>
+        <div id="task2"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 3 - First 30 Characters</h3>
+        <div id="task3"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 4 - First 100 Description Characters</h3>
+        <div id="task4"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 5 - Product Images</h3>
+        <div id="task5"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 6 - Title, Description and Image</h3>
+        <div id="task6"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 7 - Product Price</h3>
+        <div id="task7"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 8 - Product Category</h3>
+        <div id="task8"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 9 - Uppercase Title</h3>
+        <div id="task9"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 10 - Title and Character Count</h3>
+        <div id="task10"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 11 - First 5 Products</h3>
+        <div id="task11"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 12 - ID, Title and Price</h3>
+        <div id="task12"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 13 - Image Width 200px</h3>
+        <div id="task13"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 14 - Product Cards</h3>
+        <div id="task14"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 15 - Description 50 Characters</h3>
+        <div id="task15"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 16 - Console and Webpage Titles</h3>
+        <div id="task16"></div>
+    </div>
+
+    <div class="section">
+        <h3>Task 17 - Title and Category</h3>
+        <div id="task17"></div>
+    </div>
+
+    <h2>Mini Project - Online Shopping Products</h2>
+
+    <div id="products"></div>
+
+    <script>
+
+        let api = document.querySelector(".api");
+        let products = document.querySelector("#products");
+
+        api.innerHTML = "Loading...";
+
+        fetch("https://dummyjson.com/products")
+
+        .then(function(response) {
+            return response.json();
+        })
+
+        .then(function(data) {
+
+            let productList = data.products;
+
+            api.innerHTML = "Products Loaded Successfully!";
+
+            productList.forEach(function(product) {
+
+                
+                document.querySelector("#task1").innerHTML +=
+                    "<h1>" + product.title + "</h1>";
+
+            
+                document.querySelector("#task2").innerHTML +=
+                    "<h2>" + product.id + " - " + product.title + "</h2>";
+
+                
+                document.querySelector("#task3").innerHTML +=
+                    "<p>" + product.title.slice(0, 30) + "</p>";
+
+                
+                document.querySelector("#task4").innerHTML +=
+                    "<p>" + product.description.slice(0, 100) + "</p>";
+
+                
+                document.querySelector("#task5").innerHTML +=
+                    "<div><img src='" + product.thumbnail +
+                    "' width='200'></div>";
+
+                
+                document.querySelector("#task6").innerHTML +=
+                    "<div><h3>" + product.title +
+                    "</h3><p>" + product.description +
+                    "</p><img src='" + product.thumbnail +
+                    "' width='100'></div>";
+
+                
+                document.querySelector("#task7").innerHTML +=
+                    "<p>Price: $" + product.price + "</p>";
+
+                
+                document.querySelector("#task8").innerHTML +=
+                    "<h3>" + product.category + "</h3>";
+
+                
+                document.querySelector("#task9").innerHTML +=
+                    "<p>" + product.title.toUpperCase() + "</p>";
+
+                
+                document.querySelector("#task10").innerHTML +=
+                    "<p>" + product.title +
+                    " - Characters: " + product.title.length + "</p>";
+
+                
+                document.querySelector("#task12").innerHTML +=
+                    "<p>ID: " + product.id +
+                    " | Title: " + product.title +
+                    " | Price: $" + product.price + "</p>";
+
+                
+                document.querySelector("#task13").innerHTML +=
+                    "<div><img src='" + product.thumbnail +
+                    "' width='200px'></div>";
+
+                
+                document.querySelector("#task14").innerHTML +=
+                    "<div class='card'><h3>" +
+                    product.title + "</h3></div>";
+
+                
+                document.querySelector("#task15").innerHTML +=
+                    "<h3>" + product.title + "</h3>" +
+                    "<p>" + product.description.slice(0, 50) + "</p>";
+
+            
+                console.log(product.title);
+
+                document.querySelector("#task16").innerHTML +=
+                    "<p>" + product.title + "</p>";
+
+            
+                document.querySelector("#task17").innerHTML +=
+                    "<div><h3>" + product.title +
+                    "</h3><p>" + product.category + "</p></div>";
+
+            });
+
+            
+            productList.slice(0, 5).forEach(function(product) {
+
+                document.querySelector("#task11").innerHTML +=
+                    "<p>" + product.id + " - " +
+                    product.title + "</p>";
+
+            });
+
+            
+
+            productList.forEach(function(product) {
+
+                let card = document.createElement("div");
+
+                card.className = "card";
+
+                card.innerHTML =
+                    "<h3>Product ID: " + product.id + "</h3>" +
+                    "<img src='" + product.thumbnail + "'>" +
+                    "<h3>" + product.title.slice(0, 50) + "</h3>" +
+                    "<p class='price'>$" + product.price + "</p>" +
+                    "<p>" + product.description.slice(0, 100) + "</p>" +
+                    "<p>Category: " + product.category + "</p>";
+
+                products.innerHTML +=
+                    "<div class='card'>" + card.innerHTML + "</div>";
+
+            });
+
+        })
+
+        .catch(function(error) {
+
+            api.innerHTML =
+                "<p style='color:red'>API Error: " +
+                error.message + "</p>";
+
+        })
+
+        .finally(function() {
+
+            api.innerHTML += "<p>API request completed</p>";
+
+        });
+
+    </script>
+
+</body>
+</html>
